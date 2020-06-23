@@ -9,6 +9,7 @@ var firebaseConfig = {
     messagingSenderId: process.env.messagingSenderId,
     appId: process.env.appId
   };
+
 firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
@@ -19,11 +20,11 @@ exports.handler = function(event, context, callback) {
     })
     
     .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-    return callback(null, {
-    statusCode: 200,
-    body:  `Document written with ID: ${docRef.id}`
-    });
+        console.log("Document written with ID: ", docRef.id);
+        callback(null, {
+        statusCode: 200,
+        body:  `Document written with ID: ${docRef.id}`
+        })
     })
     .catch(function(error) {
     console.error("Error adding document: ", error);
