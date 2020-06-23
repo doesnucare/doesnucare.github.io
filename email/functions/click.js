@@ -1,4 +1,5 @@
 const firebase = require("firebase");
+
 // Initialize Cloud Firestore through Firebase
 var firebaseConfig = {
     apiKey: process.env.apiKey,
@@ -25,9 +26,11 @@ exports.handler = function(event, context, callback) {
         statusCode: 200,
         body:  `Document written with ID: ${docRef.id}`
         })
+        return
     })
     .catch(function(error) {
-    console.error("Error adding document: ", error);
+        console.error("Error adding document: ", error);
+        return
     });
 
     
